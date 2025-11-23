@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Stats - TinyLink</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🔗 TinyLink</h1>
+      <p>Link Statistics</p>
+    </header>
+
+    <div class="content">
+      <a href="/" class="back-link">← Back to Dashboard</a>
+
+      <div id="loadingState" class="loading">
+        <div class="spinner"></div>
+        <p>Loading statistics...</p>
+      </div>
+
+      <div id="errorState" class="empty-state" style="display: none;">
+        <h3>Link Not Found</h3>
+        <p>This short link does not exist or has been deleted.</p>
+        <a href="/" class="btn btn-primary" style="margin-top: 20px;">Go to Dashboard</a>
+      </div>
+
+      <div id="statsContainer" style="display: none;">
+        <div class="stats-card">
+          <h2>Link Details</h2>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3>Short Code</h3>
+              <p id="statCode">-</p>
+            </div>
+            
+            <div class="stat-item">
+              <h3>Total Clicks</h3>
+              <p id="statClicks">0</p>
+            </div>
+            
+            <div class="stat-item">
+              <h3>Created</h3>
+              <p id="statCreated" style="font-size: 1em;">-</p>
+            </div>
+            
+            <div class="stat-item">
+              <h3>Last Clicked</h3>
+              <p id="statLastClicked" style="font-size: 1em;">-</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px;">
+            <h3 style="margin-bottom: 15px; color: #495057;">Target URL</h3>
+            <div style="background: white; padding: 15px; border-radius: 6px; word-break: break-all;">
+              <a id="statTargetUrl" href="#" target="_blank" style="color: #667eea; text-decoration: none;">
+              </a>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px;">
+            <h3 style="margin-bottom: 15px; color: #495057;">Short URL</h3>
+            <div style="background: white; padding: 15px; border-radius: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span id="statShortUrl" style="flex: 1; word-break: break-all; font-family: monospace;">
+              </span>
+              <button class="copy-btn" onclick="copyShortUrl()">
+                Copy Link
+              </button>
+              <a id="testLink" href="#" target="_blank" class="btn btn-secondary">
+                Test Link
+              </a>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="btn btn-danger" onclick="deleteCurrentLink()">
+              Delete This Link
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>TinyLink v1.0 | <a href="/healthz" target="_blank">Health Check</a></p>
+    </footer>
+  </div>
+
+  <script src="/stats.js"></script>
+</body>
+</html>
